@@ -44,3 +44,35 @@
 
 ## Example Input
 
+https://example.com [1234] [93.184.216.34] [Header1,Header2]
+https://test.com [10.0.0.1] [Header3]
+https://redirect.com [2345] [192.168.1.1]
+
+
+
+
+---
+
+## Example Output Files
+
+- **`200-subs.txt`**
+
+    ```
+    https://example.com  [1234] [93.184.216.34] [Header1,Header2]
+    https://redirect.com  [2345] [192.168.1.1]
+    ```
+
+- **`301-subs.txt`**
+
+    ```
+    https://redirect.com  [2345] [192.168.1.1]
+    ```
+
+- **`404-subs.txt`**
+
+    ```
+    https://test.com   [10.0.0.1] [Header3]
+    ```
+
+---
+
