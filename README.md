@@ -11,26 +11,26 @@
 1. **Clone the repository** (or download the script):
 
     ```
-    git clone https://github.com/yourusername/CodeCrack.git
-    cd CodeCrack
+    git clone https://github.com/yourusername/Splitter.git
+    cd splitter
     ```
 
 2. **Make the script executable:**
 
     ```
-    chmod +x codecrack.sh
+    chmod +x splitter
     ```
 
 3. **Run the tool by piping your HTTPX results file:**
 
     ```
-    cat alive-subdomains.txt | ./codecrack.sh
+    cat alive-subdomains.txt | ./splitter
     ```
 
     Or alternatively, redirect input:
 
     ```
-    ./codecrack.sh < alive-subdomains.txt
+    ./splitter < alive-subdomains.txt
     ```
 
 4. **Check the created files**, named by HTTP status codes like:
@@ -44,9 +44,9 @@
 
 ## Example Input
 
-https://example.com [1234] [93.184.216.34] [Header1,Header2]
-https://test.com [10.0.0.1] [Header3]
-https://redirect.com [2345] [192.168.1.1]
+https://example.com [200] [93.184.216.34] 
+https://test.com [301]  [10.0.0.1] 
+https://redirect.com [404] [192.168.1.1]
 
 
 
@@ -58,20 +58,20 @@ https://redirect.com [2345] [192.168.1.1]
 - **`200-subs.txt`**
 
     ```
-    https://example.com  [1234] [93.184.216.34] [Header1,Header2]
-    https://redirect.com  [2345] [192.168.1.1]
+    https://example.com  [200] [93.184.216.34] 
+    https://redirect.com  [200] [192.168.1.1]
     ```
 
 - **`301-subs.txt`**
 
     ```
-    https://redirect.com  [2345] [192.168.1.1]
+    https://redirect.com  [301] [192.168.1.1]
     ```
 
 - **`404-subs.txt`**
 
     ```
-    https://test.com   [10.0.0.1] [Header3]
+    https://test.com  [404] [10.0.0.1] 
     ```
 
 ---
