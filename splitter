@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Tool name suggestion: CodeCrack (same as before)
+
+# Function to strip ANSI color codes from a string
+strip_ansi() {
+    # This regex removes common ANSI escape sequences
+    echo "$1" | sed -r 's/\x1B\[[0-9;]*[mK]//g'
+}
+
+while IFS= read -r line; do
+    # Remove any ANSI color codes from input line
+    clean_line=$(strip_ansi "$line")
+
+    # Extract the status code(s) inside the first brackets after the URL
+    status=$(echo "$clean_line" | grep -oP '\[\K[^\]]+' | head -1 | cut -d',' -f1)
+
+    if [[ -z "$status" ]]; then
+        # No status found, write to unknown-subs.txt
+        echo "$clean_line" >> unknown-subs.txt
+    else
+        # Write clean line to clean file name
+        echo "$clean_line" >> "${status}-subs.txt"
+    fi
+done
